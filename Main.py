@@ -23,6 +23,8 @@ grassBlockImg = pygame.image.load('Assets/grass_block.png')
 dirtBlockImg = pygame.image.load('Assets/dirt_block.png')
 titleImg = pygame.image.load('Assets/title.png')
 
+frogCakeImg = pygame.image.load('Assets/frog_and_cake.png')
+
 ########################################
 
 FONT = pygame.font.SysFont(None, 32)
@@ -61,6 +63,10 @@ button1 = Button(SCREEN_WIDTH / 2 - 0.5*(150), 400, 150, 50, "Begin...")
 leftButton = Button(25, 400, 150, 50, "Left choice")
 rightButton = Button(575, 400, 150, 50, "Right choice")
 
+beginGame = False
+left1 = False
+right1 = False
+
 def screen1():
     screen.fill((115, 190, 223))
     start_y = 500 #where row of grass blocks is drawn
@@ -82,16 +88,22 @@ def screen1():
 
 def screen2():
     screen.fill((115, 190, 223))
+    
+
+    screen.blit(pygame.transform.scale(frogCakeImg, (750, 600)), (0, 0))
+
     leftButton.draw(screen)
     rightButton.draw(screen)
 
-tracker = 1
+    #text1 = FONT.render
+
+
 keepRunning = True
 while keepRunning:
     
-    if(tracker == 1):
+    if(beginGame == False):
         screen1()
-    elif(tracker == 2):
+    if((beginGame == True) and (left1 == False and right1 == False)):
         screen2()
 
 
@@ -105,7 +117,7 @@ while keepRunning:
             keepRunning = False
         
         if button1.is_clicked(event):
-            tracker = tracker + 1
+            beginGame = True
                 
 
 
