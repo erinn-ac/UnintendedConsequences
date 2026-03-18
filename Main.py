@@ -25,6 +25,7 @@ titleImg = pygame.image.load('Assets/title.png')
 
 frogCakeImg = pygame.image.load('Assets/frog_and_cake.png')
 frogNoCakeImg = pygame.image.load('Assets/frog_no_cake.png')
+frogsCakeImg = pygame.image.load('Assets/frogs_and_cake.png')
 
 ########################################
 
@@ -114,6 +115,17 @@ def screen3():
     text1 = FONT.render("Lily eats the cake.", True, (255, 255, 255))
     screen.blit(text1, (10, 100))
 
+def screen4():
+    screen.fill((115, 190, 223))
+    
+
+    screen.blit(pygame.transform.scale(frogsCakeImg, (750, 600)), (0, 0))
+
+    leftButton.draw(screen)
+    rightButton.draw(screen)
+
+    text1 = FONT.render("Fran comes to eat the cake.", True, (255, 255, 255))
+    screen.blit(text1, (10, 100))
    
 
 
@@ -126,6 +138,8 @@ while keepRunning:
         screen2()
     elif(left1 == True):
         screen3()
+    elif(right1 == True):
+        screen4()
 
 
 
@@ -142,6 +156,9 @@ while keepRunning:
         if leftButton.is_clicked(event):
             if(left1 == False or right1 == False):
                 left1 = True
+        if rightButton.is_clicked(event):
+            if(left1 == False or right1 == False):
+                right1 = True
                 
 
 
