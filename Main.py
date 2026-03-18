@@ -24,6 +24,7 @@ dirtBlockImg = pygame.image.load('Assets/dirt_block.png')
 titleImg = pygame.image.load('Assets/title.png')
 
 frogCakeImg = pygame.image.load('Assets/frog_and_cake.png')
+frogNoCakeImg = pygame.image.load('Assets/frog_no_cake.png')
 
 ########################################
 
@@ -95,7 +96,25 @@ def screen2():
     leftButton.draw(screen)
     rightButton.draw(screen)
 
-    #text1 = FONT.render
+    text1 = FONT.render("Lily is a frog with a cake. Should she eat the cake (left choice) or give", True, (255, 255, 255))
+    screen.blit(text1, (10, 100))
+
+    text2 = FONT.render("it to her friend Fran (right choice)?", True, (255, 255, 255))
+    screen.blit(text2, (10, 125))
+
+def screen3():
+    screen.fill((115, 190, 223))
+    
+
+    screen.blit(pygame.transform.scale(frogNoCakeImg, (750, 600)), (0, 0))
+
+    leftButton.draw(screen)
+    rightButton.draw(screen)
+
+    text1 = FONT.render("Lily eats the cake.", True, (255, 255, 255))
+    screen.blit(text1, (10, 100))
+
+   
 
 
 keepRunning = True
@@ -105,6 +124,8 @@ while keepRunning:
         screen1()
     if((beginGame == True) and (left1 == False and right1 == False)):
         screen2()
+    elif(left1 == True):
+        screen3()
 
 
 
@@ -118,6 +139,9 @@ while keepRunning:
         
         if button1.is_clicked(event):
             beginGame = True
+        if leftButton.is_clicked(event):
+            if(left1 == False or right1 == False):
+                left1 = True
                 
 
 
